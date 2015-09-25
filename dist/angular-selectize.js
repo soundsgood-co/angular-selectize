@@ -2,6 +2,15 @@
  * Angular Selectize2
  * https://github.com/machineboy2045/angular-selectize
  **/
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define('angular-selectize', ['selectize',], factory);
+  } else if (typeof exports === 'object') {
+    factory(require('selectize'));
+  } else {
+    factory(root.Selectize);
+  }
+}(this, function(Selectize) {
   angular.module('selectize', []).value('selectizeConfig', {}).directive("selectize", ['selectizeConfig', function(selectizeConfig) {
     return {
       restrict: 'EA',
@@ -104,3 +113,4 @@
       }
     };
   }]);
+}));
